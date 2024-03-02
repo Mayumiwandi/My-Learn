@@ -125,10 +125,10 @@ Memiliki kelebihan yaitu mudah dimengerti dan cocok untuk klasifikasi biner, tet
 | Naive Bayes | 0.49 |
 | Extra Trees Classifier | 0.90 |
 
-
-
 **Plot Accuracy**
+
 ![Plot Accuracy](https://drive.google.com/uc?export=view&id=1nmlb5VLsMwQH3z68wSUKnKmR0hDZqJUB)
+
 Dari hasil tersebut dapat diketahui bahwa model dengan algoritma KNN memiliki kinerja yang lebih baik. Untuk itu model tersebut yang akan dipilih untuk digunakan.
 
 ## Referensi
