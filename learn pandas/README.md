@@ -50,11 +50,18 @@ Tujuan dari proyek ini adalah:
 Berikut informasi pada dataset: 
 Data yang digunakan dalam pembuatan model merupakan data primer, data ini didapat dari sebuah perusahaan pertanian Amerika, yang disediakan secara publik di kaggle dengan nama datasets yaitu: _Apple Quality_
 
-![foto apel](https://i.ibb.co/HNGPv8J/Screenshot-from-2024-03-04-16-21-44.png)
+| A_id | Size | Weight | Sweetness | Crunchiness | Juiciness | Ripeness | Acidity | Quality |
+| ------ | ------ |------ | ------ | ------ | ------ |------ | ------ |------ |
+| 0.0 | -3.970049 |-2.512336 | 5.346330 |-1.012009 | 1.844900 |0.329840	| -0.491590483  |good |
+| 1.0 | -1.195217 |-2.839257 | 3.664059 |1.588232 | 0.853286 | 0.867530 | -0.722809367  |good |
+| 2.0 | -0.292024 |	-1.351282 | -1.738429 | -0.342616 | 2.838636 |-0.038033	| 2.621636473  |bad |
+| 3.0 | -0.657196 |-2.271627 | 1.324874 |-0.097875 | 3.637970 |-3.413761	| 0.790723217  |good |
+| 4.0 | 1.364217 |-1.296612 | -0.384658 | -0.553006 | 3.030874 | -1.303849	| 0.501984036  |good |
 
-Gambar 1. EDA Deskripsi Variabel
 
-Dilihat dari _Gambar 1. EDA Deskripsi Variabel_ dataset ini telah di *bersikan* dan *normalisasi* terlebih dahulu oleh pembuat, sehingga mudah digunakan dan ramah bagi pemula. 
+Tabel 1. EDA Deskripsi Variabel
+
+Dilihat dari _Tabel 1. EDA Deskripsi Variabel_ dataset ini telah di *bersihkan* dan *normalisasi* terlebih dahulu oleh pembuat, sehingga mudah digunakan dan ramah bagi pemula. 
 - Dataset berupa CSV (Comma-Seperated Values).
 - Dataset memiliki 4001 sample dengan 9 fitur.
 - Dataset memiliki 7 fitur bertipe float64 dan 2 fitur bertipe object.
@@ -76,36 +83,44 @@ Dari ke 9 fitur dapat dilihat bahwa fitur `A_id` tidak mempengaruhi kualitas bua
 
 ![Analisis Univariat (Data Kategori)](https://i.ibb.co/0MRrJCC/jumlah-kualitas-datasets.png)
 
-Gambar 2a. Analisis Univariat (Data Kategori) 
+Gambar 1a. Analisis Univariat (Data Kategori) 
 
 ![Univariate Analysis](https://i.ibb.co/V2mQ2dK/EDA-Univariate.png)
 
-Gambar 2b. Analisis Univariat (Data Numerik) 
+Gambar 1b. Analisis Univariat (Data Numerik) 
 
- Berdasarkan _Gambar 2a_ , dapat dilihat bahwa distribusi data katagorik _Quality_ yang terdiri dari _good_ dan _bad_ kualitas apel, yang mana nilai data **bad** terdiri dari `1928` dan **good** terdiri dari `1862`, yang mana menunjukan perbandingan data yang tidak terlalu jauh. Pada _Gambar 2b,_ untuk data numerik memiliki karakteristik, yaitu:
-  - Dilihat dari distribusi data numerik _Size_, ukuran buah berkisar dari -2 sampai 2, dan memiliki nilai rata-rata _Mean_ adalah -0.51.
+ Berdasarkan _Gambar 1a_ , dapat dilihat bahwa distribusi data katagorik _Quality_ yang terdiri dari _good_ dan _bad_ kualitas apel, yang mana nilai data **bad** terdiri dari `1928` dan **good** terdiri dari `1862`, yang mana menunjukan perbandingan data yang tidak terlalu jauh. Pada _Gambar 1b,_ untuk data numerik memiliki karakteristik, yaitu:
+  - Dilihat dari distribusi data numerik _Size_, ukuran rata-rata buah berkisar dari -2 sampai 2, dan memiliki nilai rata-rata _Mean_ adalah -0.51.
   - Rata-rata berat apel bernilai -0.99 dan nilai _max_ berat apel adalah 3.08.
   - Rata-rata tingkat kemanisan apel -0.48.
   - Tekstur kerenyahan apel berkisar dari 0 hingga 2 yang mana nilai ini menunjukan rata-rata apel itu renyah.
   - Tingkat kesegaran buah dan Kematangan buat berada pada nilai 0.50 dan 0.53.
   - Rata-rata tingkat keasaman buah bernilai 0.06.
-  
-Lihat _Gambar 1. EDA Deskripsi Variabel_ untuk memahami informasi dataset.
+
+ Nilai-nilai ini menunjukkan bahwa data  telah dinormalisasi dengan cara _z-score normalization_ . _z-score normalization_  mengubah data dengan cara:
+ - Mengurangi rata-rata (mean) dari setiap data point.
+ - Membagi hasil pengurangan tersebut dengan standar deviasi data.
+ 
+
+Pada kasus ini, rata-rata (mean) data "Size" adalah -0.51 dan standar deviasi data "Size" tidak diketahui. Namun, dengan nilai minimum -2 dan maksimum 2, dapat diasumsikan bahwa data "Size" telah diubah skalanya sehingga memiliki mean 0 dan standar deviasi 1. Data numerik lainnya, seperti _"Weight", "Sweetness", "Crunchiness", "Juiciness", "Ripeness", dan "Acidity"_, juga telah dinormalisasi dengan cara yang sama.
+
+
+ 
 
 ### EDA - Multivariate Analysis
 
 ![Multivariate Analysis](https://i.ibb.co/yNHmpNZ/EDA-MULTIVARIATE.png)
 
 
-Gambar 3a. Analisis Multivariat
+Gambar 2a. Analisis Multivariat
 
 ![Multivariate Analysis](https://i.ibb.co/WBQ5gPy/Matrix-corelasi.png)
 
 
-Gambar 3b. Analisis Matriks Korelasi
+Gambar 2b. Analisis Matriks Korelasi
 
-Pada _Gambar 2a_, dengan menggunakan fungsi _pairplot_ dari _library seaborn_, tampak terlihat relasi pasangan dalam dataset menunjukan pola acak. Pada pola sebaran data grafik pairplot, terterlihat bahwa _Size_ dan _Sweetness_ memiliki korelasi negatif menurun, yang mana semakin kecil ukuran buah rasa nya akan semakin manis.
-Pada _Gambar 2b_, merupakan _Correlation Matrix_ menunjukkan hubungan antar fitur dalam nilai korelasi. Jika diamati, fitur _Juiciness_ memiliki skor korelasi yang cukup besar `0.24` dengan fitur target _Acidity_ .
+Pada _Gambar 2a. Analisis Multivariat_, dengan menggunakan fungsi _pairplot_ dari _library seaborn_, tampak terlihat relasi pasangan dalam dataset menunjukan pola acak. Pada pola sebaran data grafik pairplot, terterlihat bahwa _Size_ dan _Sweetness_ memiliki korelasi negatif menurun, yang mana semakin kecil ukuran buah rasa nya akan semakin manis.
+Pada _Gambar 2b. Analisis Matriks Korelasi_, merupakan _Correlation Matrix_ menunjukkan hubungan antar fitur dalam nilai korelasi. Jika diamati, fitur _Juiciness_ memiliki skor korelasi yang cukup besar `0.24` dengan fitur target _Acidity_ .
 ## Data Preparation
 Pada proses _Data Preparation_ dilakukan kegiatan seperti _Data Gathering_, _Data Assessing_, dan _Data Cleaning_. Pada proses Data Gathering, data diimpor sedemikian rupa agar bisa dibaca dengan baik menggunakan dataframe Pandas. Untuk proses Data Assessing, berikut adalah beberapa pengecekan yang dilakukan:
 - Duplicate data (data yang serupa dengan data lainnya).
@@ -117,15 +132,12 @@ Pada proses _Data Cleaning_ yang dilakukan adalah seperti:
 - Train Test Split (membagi data menjadi data latih dan data uji).
 - Normalization (mentransformasi data ke dalam skala yang seragam sehingga semua fitur atau atribut memiliki rentang nilai yang sebanding).
 
-![Missing value](https://i.ibb.co/vXNjtBx/ss-informasi-mising-value.png)
+| A_id | Size | Weight | Sweetness | Crunchiness | Juiciness | Ripeness | Acidity | Quality |
+| ------ | ------ |------ | ------ | ------ | ------ |------ | ------ |------ |
+| NaN | NaN | NaN | NaN |NaN | NaN| NaN	| Created_by_Nidula_Elgiriyewithana  | NaN |
+Tabel 2. Melihat data missing value
 
-Gambar 4a. Missing value
-
-![Data Missing value](https://i.ibb.co/2K6qxT8/Screenshot-from-2024-03-04-16-44-22.png)
-
-Gambar 4b. Melihat data missing value
-
-Pada proyek kasus ini tidak ditemukannya data duplikat, tetapi ditemukannya _missing value_ lihat _**Gambar 4a. Missing value**_ . Adapaun metode yang digunakan untuk mengatasi hal ini adalah dengan menerapkan _Dropping_ yaitu menghapus data yang _missing_ digunakannya metode ini dikarenakan jumlah missing value hanya berjumlah `1` Lihat _**Gambar 4b. Melihat data missing value**_. Adapun untuk _outlier_ juga dilakukan dengan metode _dropping_ menggunakan metode IQR.  IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
+Pada proyek kasus ini tidak ditemukannya data duplikat, tetapi ditemukannya _missing value_. Adapaun metode yang digunakan untuk mengatasi hal ini adalah dengan menerapkan _Dropping_ yaitu menghapus data yang _missing_ digunakannya metode ini dikarenakan jumlah missing value hanya berjumlah `1`. Lihat _Tabel 2. Melihat data missing value_. Adapun untuk _outlier_ juga dilakukan dengan metode _dropping_ menggunakan metode IQR.  IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
 
 $$IQR = Q_3 - Q_1$$
 
@@ -219,7 +231,8 @@ $$\text{Accuracy} = \frac{\text{TP + TN}}{\text{TN + TP + FN + FP}} \times 100\%
 
 Rumus ini memecah akurasi menjadi rasio antara data yang diklasifikasikan dengan benar (TP dan TN) dengan jumlah total data. Mengalikan dengan 100% mengubah rasio menjadi persentase.
 
-Tabel 1 berikut hasil accuracy 5 buah model yang latih.
+Berikut hasil accuracy 5 buah model yang latih:
+
 | Model | Accuracy |
 | ------ | ------ |
 | KNN | 0.90 |
@@ -227,13 +240,13 @@ Tabel 1 berikut hasil accuracy 5 buah model yang latih.
 | SVM | 0.89 |
 | Naive Bayes | 0.49 |
 | Extra Trees Classifier | 0.90 |
-
+Tabel 3. Hasil Accuracy
 
 ![Plot Accuracy](https://i.ibb.co/wMPKmm4/akhirkata.png)
 
-Gambar 4. Visualisasi Accuracy Model
+Gambar 3. Visualisasi Accuracy Model
 
-Dilihat dari _Tabel 1_ dan _Gambar 3_ tersebut dapat diketahui bahwa model dengan algoritma _KNN_ memiliki Accuracy yang lebih tinggi dengan accuracy `90%` . Untuk itu model tersebut yang akan dipilih untuk digunakan. Diharapkan dengan model yang telah dikembangan dapat memprediksi kualitas apel dengan baik menggunakan _K-Nearest Neighbors (KNN)_. Alasan mengapa metode _KNN_ yang dipilih karena _KNN_ adalah algoritma yang sangat sederhana dibandingkan dengan _Extra Trees Classifier_. Hal ini membuatnya lebih mudah untuk dipahami, diimplementasikan, dan diinterpretasikan. _KNN_ juga tidak memiliki banyak parameter yang perlu dioptimalkan, sehingga lebih mudah untuk digunakan.
+Dilihat dari _Tabel 3. Hasil Accuracy_ dan _Gambar 3. Visualisasi Accuracy Model_ tersebut dapat diketahui bahwa model dengan algoritma _KNN_ memiliki Accuracy yang lebih tinggi dengan accuracy `90%` . Untuk itu model tersebut yang akan dipilih untuk digunakan. Diharapkan dengan model yang telah dikembangan dapat memprediksi kualitas apel dengan baik menggunakan _K-Nearest Neighbors (KNN)_. Alasan mengapa metode _KNN_ yang dipilih karena _KNN_ adalah algoritma yang sangat sederhana dibandingkan dengan _Extra Trees Classifier_. Hal ini membuatnya lebih mudah untuk dipahami, diimplementasikan, dan diinterpretasikan. _KNN_ juga tidak memiliki banyak parameter yang perlu dioptimalkan, sehingga lebih mudah untuk digunakan.
 
 
 
