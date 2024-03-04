@@ -242,6 +242,8 @@ Berikut hasil accuracy 5 buah model yang latih:
 | SVM | 0.89 |
 | Naive Bayes | 0.49 |
 | Extra Trees Classifier | 0.90 |
+
+
 Tabel 3. Hasil Accuracy
 
 ![Plot Accuracy](https://i.ibb.co/wMPKmm4/akhirkata.png)
