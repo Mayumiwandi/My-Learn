@@ -51,6 +51,7 @@ Berikut informasi pada dataset:
 Data yang digunakan dalam pembuatan model merupakan data primer, data ini didapat dari sebuah perusahaan pertanian Amerika, yang disediakan secara publik di kaggle dengan nama datasets yaitu: _Apple Quality_
 
 ![foto apel](https://i.ibb.co/HNGPv8J/Screenshot-from-2024-03-04-16-21-44.png)
+
 Gambar 1. EDA Deskripsi Variabel
 
 Dilihat dari _Gambar 1. EDA Deskripsi Variabel_ dataset ini telah di *bersikan* dan *normalisasi* terlebih dahulu oleh pembuat, sehingga mudah digunakan dan ramah bagi pemula. 
@@ -117,9 +118,11 @@ Pada proses _Data Cleaning_ yang dilakukan adalah seperti:
 - Normalization (mentransformasi data ke dalam skala yang seragam sehingga semua fitur atau atribut memiliki rentang nilai yang sebanding).
 
 ![Missing value](https://i.ibb.co/vXNjtBx/ss-informasi-mising-value.png)
+
 Gambar 4a. Missing value
 
 ![Data Missing value](https://i.ibb.co/2K6qxT8/Screenshot-from-2024-03-04-16-44-22.png)
+
 Gambar 4b. Melihat data missing value
 
 Pada proyek kasus ini tidak ditemukannya data duplikat, tetapi ditemukannya _missing value_ lihat _**Gambar 4a. Missing value**_ . Adapaun metode yang digunakan untuk mengatasi hal ini adalah dengan menerapkan _Dropping_ yaitu menghapus data yang _missing_ digunakannya metode ini dikarenakan jumlah missing value hanya berjumlah `1` Lihat _**Gambar 4b. Melihat data missing value**_. Adapun untuk _outlier_ juga dilakukan dengan metode _dropping_ menggunakan metode IQR.  IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
@@ -230,7 +233,7 @@ Tabel 1 berikut hasil accuracy 5 buah model yang latih.
 
 Gambar 4. Visualisasi Accuracy Model
 
-Dilihat dari _Tabel 1_ dan _Gambar 3_ tersebut dapat diketahui bahwa model dengan algoritma _KNN_ memiliki Accuracy yang lebih tinggi dengan accuracy `90%` . Untuk itu model tersebut yang akan dipilih untuk digunakan.Diharapkan dengan model yang telah dikembangan dapat memprediksi kualitas apel dengan baik menggunakan _K-Nearest Neighbors (KNN)_.
+Dilihat dari _Tabel 1_ dan _Gambar 3_ tersebut dapat diketahui bahwa model dengan algoritma _KNN_ memiliki Accuracy yang lebih tinggi dengan accuracy `90%` . Untuk itu model tersebut yang akan dipilih untuk digunakan. Diharapkan dengan model yang telah dikembangan dapat memprediksi kualitas apel dengan baik menggunakan _K-Nearest Neighbors (KNN)_. Alasan mengapa metode _KNN_ yang dipilih karena _KNN_ adalah algoritma yang sangat sederhana dibandingkan dengan _Extra Trees Classifier_. Hal ini membuatnya lebih mudah untuk dipahami, diimplementasikan, dan diinterpretasikan. _KNN_ juga tidak memiliki banyak parameter yang perlu dioptimalkan, sehingga lebih mudah untuk digunakan
 
 ## Referensi
 1. Sarnita Sadya.(2022). Produksi Apel Indonesia Sebanyak 509.544 Ton pada 2021.
